@@ -180,3 +180,21 @@ console.log(aTimes('m', 'how many times does the character occur in this sentenc
 console.log(aTimes('h', 'how many times does the character occur in this sentence?')); //4
 console.log(aTimes('?', 'how many times does the character occur in this sentence?')); //1
 console.log(aTimes('z', 'how many times does the character occur in this sentence?')); //0
+
+
+// Task 14
+//Write a function that takes a number (a) as argument
+//If a is a whole number (has no decimal place), return true
+//Otherwise, return false
+const fullNumber = (a: number):boolean =>{
+   if Number.isInteger(a){
+      return true;
+   }
+   else{
+      return false;
+   }
+}
+console.log(fullNumber(4)); //true
+console.log(fullNumber(1.123)); //false
+console.log(fullNumber(1048)); //true
+console.log(fullNumber(10.48)); //false

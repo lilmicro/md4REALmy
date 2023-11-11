@@ -198,3 +198,112 @@ console.log(fullNumber(4)); //true
 console.log(fullNumber(1.123)); //false
 console.log(fullNumber(1048)); //true
 console.log(fullNumber(10.48)); //false
+
+
+
+// Task 15 page8
+//Write a function that takes two numbers (a and b) as arguments
+//If a is smaller than b, divide a by b
+//Otherwise, multiply both numbers
+//Return the resulting value
+const comparingAandB = (a: number, b:number): number =>{
+   if (a < b) {
+      return a / b
+   } else{
+      return a * b
+   }
+}
+console.log(comparingAandB(10, 100)); //0.1
+console.log(comparingAandB(90, 45)); //4050
+console.log(comparingAandB(8, 20)); //0.4
+console.log(comparingAandB(2, 0.5)); //1
+
+
+
+// Task 16
+//Write a function that takes two strings (a and b) as arguments
+//If a contains b, append b to the beginning of a
+//If not, append it to the end
+//Return the concatenation
+const stickingWords = (a: string, b:string) : string =>{
+   if (a.includes(b)) {
+      return b + a
+   } 
+   else {
+      return a + b
+   }
+}
+console.log(stickingWords('cheese', 'cake')); //cheesecake
+console.log(stickingWords('lips', 's')); //slips
+console.log(stickingWords('Java', 'script')); //javascript
+console.log(stickingWords(' think, therefore I am', 'I')); //i think, therefore I am
+
+
+
+
+// Task 17 page9
+//Write a function that takes a number (a) as argument
+//Round a to the 2nd digit after the comma
+//Return the rounded number
+const roundDecimals = (a: number)  =>{
+   return a.toFixed(2);
+};
+console.log(roundDecimals(2.12397)); //2.12
+console.log(roundDecimals(3.136)); //3.14
+console.log(roundDecimals(1.12397)); //1.12
+console.log(roundDecimals(26.1379)); //26.14
+
+
+
+// Task 18
+//Write a function that takes a number (a) as argument
+//Split a into its individual digits and return them in an array
+//Tip: you might want to change the type of the number for the splitting
+const splitA = (a: number) : number[] =>{
+  const numStr = a.toString ();
+  const digits: number[] = [];
+  for (let i = 0; i < numStr.length; i ++)
+    {  digits.push(Number(numStr[i]))
+} return digits;
+}
+console.log(splitA(10)); // [1, 0]
+console.log(splitA(931)); // [9, 3, 1]
+console.log(splitA(193278)); // [1, 9, 3, 2, 7, 8]
+
+
+
+
+
+// Task 19
+//Write a function that joins these strings together such that they form the following words:
+//'Javascript', 'Countryside', and 'Downtown'
+const joinStrings = (a: string, b: string) : string =>{
+   const modA = a[0].toUpperCase()+ a.slice(1).replace('%', '')
+   const modB = b.split('').reverse().join('').replace('%', '');
+   return modA + modB;
+}
+console.log(joinStrings('java', 'tpi%rcs')); // Javascript
+console.log(joinStrings('c%ountry', 'edis')); // Countryside
+console.log(joinStrings('down', 'nw%ot')); // Downtown
+
+
+
+
+
+// Task 20
+//Write a function that takes a number (a) as argument
+//If a is prime, return a
+//If not, return the next higher prime number
+const primeNumber = (a: number) :number =>{
+   if (a / 1 && a / a){
+      return a
+   }
+  else if (a / 2){
+     return (a+1)
+   }
+}
+console.log(primeNumber(38)); //
+console.log(primeNumber(7)); // 7
+console.log(primeNumber(115)); //
+console.log(primeNumber(2000)); //
+

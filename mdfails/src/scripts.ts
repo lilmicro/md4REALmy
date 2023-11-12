@@ -307,3 +307,147 @@ console.log(primeNumber(7)); // 7
 console.log(primeNumber(115)); //
 console.log(primeNumber(2000)); //
 
+
+
+// Task 21 page11
+//Write a function that takes two numbers, say x and y, as arguments
+//Check if x is divisible by y
+//If yes, return x
+//If not, return the next higher natural number that is divisible by y
+const XdividedY = (x: number, y: number):number =>{
+   if (x % y === 0) {
+      return x
+   } else  {
+       return Math.ceil(x / y)*y;
+   }
+}
+console.log(XdividedY(1, 23)) // 23
+console.log(XdividedY(23, 23)) // 23
+console.log(XdividedY(7, 3)) // 9
+console.log(XdividedY(-5, 7)) // 0
+
+
+
+// Task 22
+//Write a function that takes two strings (a and b) as arguments
+//Beginning at the end of 'a', insert 'b' after every 3rd character of 'a'
+//Return the resulting string
+const insertB = (a: string, b:string) :string =>{
+   const val = []
+   for (let i = a.length-1; i>=0; i--){
+     val.push(a.slice(i, i + 3));
+   }
+   return val.join(b);
+}
+console.log(insertB('1234567','.')); // 7.67.567.456.345.234.123
+console.log(insertB('abcde','$')); // e$de$cde$bcd$abc
+console.log(insertB('zxyzxyzxyzxyzxyz','w')); // wxyzwzxywyzxwxyzwzxywyzxwxyzwzxywyzxwxyzwzxywyzxwxyzwzxy
+
+
+
+
+// Task 23
+//Write a function that takes a string as argument
+//As it is, the string has no meaning
+//Increment each letter to the next letter in the alphabet
+//Return the correct word
+const alphabetNextLetter = (a:string) :string =>{
+   
+   return a
+    .split('')
+    .map((char) => {
+      if (char.match(/[a-zA-Z]/)) {
+        return String.fromCharCode(char.charCodeAt(0) + 1);
+      } else {
+        return char;
+      }
+    })
+    .join('');
+};
+
+console.log(alphabetNextLetter('bnchmf')); //coding
+console.log(alphabetNextLetter('bgddrd')); //cheese
+console.log(alphabetNextLetter('sdrshmf')); //testing
+
+
+
+
+
+// Task 24 
+//Write a function that takes an array (a) and a value (n) as argument
+//Return the nth element of 'a'
+const nthElement = (a: number[], n:number) =>{
+   return a[n-1];
+}
+console.log(nthElement([1,2,3,4,5],3)); // 3
+console.log(nthElement([10,9,8,7,6],5)); // 6
+console.log(nthElement([7,2,1,6,3],1)); // 7
+
+
+// Task 24
+//Write a function that takes an array (a) as argument
+//Remove the first 3 elements of 'a'
+//Return the result
+const elementsOff = (a: T[]) :T[] {
+   return a.slice(3)
+}
+console.log(elementsOff([1,2,3,4])) // [4]
+console.log(elementsOff([5,4,3,2,1,0])) // [2, 1, 0]
+console.log(elementsOff([99,1,1])) // []
+
+
+
+// Task 25 page 13
+//Write a function that takes an array (a) as argument
+//Extract the last 3 elements of a
+//Return the resulting array
+const extractElement= (a : number[]) :number[]{
+      return a.slice(-3);
+   
+  }
+console.log(extractElement([1,2,3,4])); // [2, 3, 4]
+console.log(extractElement([5,4,3,2,1,0])); // [2, 1, 0]
+console.log(extractElement([99,1,1])); // [99, 1, 1]
+
+
+
+// Task 26
+//Write a function that takes an array (a) as argument
+//Extract the first 3 elements of a
+//Return the resulting array
+const extrFirstelements = (a: number[]) {
+   return a.slice (0, 3)
+}
+console.log(extrFirstelements([1,2,3,4])); //[1, 2, 3]
+console.log(extrFirstelements([5,4,3,2,1,0])); // [5, 4, 3]
+console.log(extrFirstelements([91,1,1])); // [91, 1, 1]
+
+
+
+
+
+// Task 27
+//Write a function that takes an array (a) and a number (n) as arguments
+//It should return the last n elements of a
+const lastElements = (a: number[], n:number){
+   return a.slice(-n)
+}
+console.log(lastElements([1, 2, 3, 4, 5], 2)) //[ 4, 5]
+console.log(lastElements([1, 2, 3], 6)) // [1, 2, 3]
+console.log(lastElements([1, 2, 3, 4, 5, 6, 7, 8], 3)) //[ 6, 7, 8]
+
+
+
+
+// Task 28 page14
+//Write a function that takes an array (a) and a value (b) as argument
+//The function should clean a from all occurrences of b
+//Return the filtered array
+const filterB = (a: any[], b: any) =>{
+   return a.filter((element) => element !== b);
+}
+console.log(filterB([1,2,3], 2)); //
+console.log(filterB([1,2,'2'], '2')); //
+console.log(filterB([false,'2',1], false)); //
+console.log(filterB([1,2,'2',1], 1)); //
+JAATKARTO CALLBACK FUNKCIJAS

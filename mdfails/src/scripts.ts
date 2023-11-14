@@ -364,6 +364,9 @@ const alphabetNextLetter = (a:string) :string =>{
     })
     .join('');
 };
+/* for(var i=0; i<arr.lenght; i++{
+   var blabla = arr[i];
+   nerArr.push(blabla + 1)*/
 
 console.log(alphabetNextLetter('bnchmf')); //coding
 console.log(alphabetNextLetter('bgddrd')); //cheese
@@ -388,7 +391,7 @@ console.log(nthElement([7,2,1,6,3],1)); // 7
 //Write a function that takes an array (a) as argument
 //Remove the first 3 elements of 'a'
 //Return the result
-const elementsOff = (a: T[]) :T[] {
+const elementsOff = (a: T[]) :T[] => {
    return a.slice(3)
 }
 console.log(elementsOff([1,2,3,4])) // [4]
@@ -401,7 +404,7 @@ console.log(elementsOff([99,1,1])) // []
 //Write a function that takes an array (a) as argument
 //Extract the last 3 elements of a
 //Return the resulting array
-const extractElement= (a : number[]) :number[]{
+const extractElement= (a : number[]) :number[]=>{
       return a.slice(-3);
    
   }
@@ -415,7 +418,7 @@ console.log(extractElement([99,1,1])); // [99, 1, 1]
 //Write a function that takes an array (a) as argument
 //Extract the first 3 elements of a
 //Return the resulting array
-const extrFirstelements = (a: number[]) {
+const extrFirstelements = (a: number[]) => {
    return a.slice (0, 3)
 }
 console.log(extrFirstelements([1,2,3,4])); //[1, 2, 3]
@@ -429,7 +432,7 @@ console.log(extrFirstelements([91,1,1])); // [91, 1, 1]
 // Task 27
 //Write a function that takes an array (a) and a number (n) as arguments
 //It should return the last n elements of a
-const lastElements = (a: number[], n:number){
+const lastElements = (a: number[], n:number) => {
    return a.slice(-n)
 }
 console.log(lastElements([1, 2, 3, 4, 5], 2)) //[ 4, 5]
@@ -446,8 +449,235 @@ console.log(lastElements([1, 2, 3, 4, 5, 6, 7, 8], 3)) //[ 6, 7, 8]
 const filterB = (a: any[], b: any) =>{
    return a.filter((element) => element !== b);
 }
-console.log(filterB([1,2,3], 2)); //
+//const result: string[] = a.filter((b):void =>)
+
+console.log(filterB([1,2,3], 2)); // 
 console.log(filterB([1,2,'2'], '2')); //
 console.log(filterB([false,'2',1], false)); //
 console.log(filterB([1,2,'2',1], 1)); //
-JAATKARTO CALLBACK FUNKCIJAS
+//JAATKARTO CALLBACK FUNKCIJAS
+
+
+
+
+// Task 29 
+//Write a function that takes an array (a) as argument
+//Return the number of elements in a
+const numberOfElements = (a: number[]) =>{
+   return a.length;
+} 
+console.log(numberOfElements([1,2,2,4])); // 4
+console.log(numberOfElements([9,9,9])); // 3
+console.log(numberOfElements([4,3,2,1,0])); // 5
+
+
+
+
+// Task 30 page15
+//Write a function that takes an array of numbers as argument
+//Return the number of negative values in the array
+const negativeValue = (array: number[]) =>{
+   return array.filter(value => value < 0);
+}
+console.log(negativeValue([1,-2,2,-4])); // [-2, -4]
+console.log(negativeValue([0,9,1])); // []
+console.log(negativeValue([4,-3,2,1,0])); //[-3]
+
+
+
+// Task 31
+//Write a function that takes an array of numbers as argument
+//It should return an array with the numbers sorted in descending order
+const reverseArray = (array: number[]) =>{
+    array.sort(function(a, b){return b - a});
+}
+console.log(reverseArray([1,3,2])); // 
+console.log(reverseArray([4,2,3,1])); // 
+
+
+
+
+// Task 32
+//Write a function that takes an array of strings as argument
+//Sort the array elements alphabetically
+const arrayAlphabet = (array : string[]) =>{
+   return array.sort();
+}
+console.log(arrayAlphabet(['b', 'c', 'd', 'a'])); // ['a', 'b', 'c', 'd']
+console.log(arrayAlphabet(['z', 'c', 'd', 'a', 'y', 'a', 'w'])) // ['a', 'a', 'c', 'd', 'w', 'y', 'z']
+
+
+
+
+// Task 33 page 16
+//Write a function that takes an array of numbers as argument
+//It should return the average of the numbers
+const averageNumber = (array: number[]) =>{
+   const counter = array.length;
+   const sum = array.reduce((valueB, valueA) => valueA + valueB, 0);
+   return sum / counter;
+}
+console.log(averageNumber([10,100,40])); // 50
+console.log(averageNumber([10,100,1000])); // 370
+console.log(averageNumber([-50,0,50,200])); // 50
+
+
+
+// Task 34
+//Write a function that takes an array of strings as argument
+//Return the longest string
+const longestStr = (array: string[]): string =>{
+   let longest = array[0]
+   for (let i = 1; i < array.length; i++){
+      if (array[i].length > longest.length){
+         longest = array[i]
+      }
+   }
+return longest;
+}
+console.log(longestStr(['help', 'me'])); // help
+console.log(longestStr(['I', 'need', 'candy'])); // candy
+
+
+
+
+
+// Task 35
+//Write a function that takes an array as argument
+//It should return true if all elements in the array are equal
+//It should return false otherwise
+const equalElements = (array: any[]): boolean =>{
+   return array.every(element => element === array[0])
+}
+console.log(equalElements([true, true, true, true])) // true
+console.log(equalElements(['test', 'test', 'test'])) // true 
+console.log(equalElements([1,1,1,2])) // false
+console.log(equalElements(['10',10,10,10])) // false
+
+
+
+
+// Task 36 page17
+//Write a function that takes arguments an arbitrary number of arrays
+//It should return an array containing the values of all arrays
+const joinArray = (...arrays) =>{
+   return [].concat.apply([], arrays);
+};
+console.log(joinArray([1, 2, 3], [4, 5, 6])); // [1, 2, 3, 4, 5, 6]
+console.log(joinArray(['a', 'b', 'c'], [4, 5, 6])); // ['a', 'b', 'c', 4, 5, 6]
+console.log(joinArray([true, true], [1, 2], ['a', 'b'])) // [true, true, 1, 2, 'a', 'b']
+
+
+
+
+// Task 37
+//Write a function that takes an array of objects as argument
+//Sort the array by property b in ascending order
+//Return the sorted array
+const sortedObj = (objects) => {
+   return objects.sort((a, b) => a.b - b.b);
+};
+console.log(sortedObj([{a:1,b:2},{a:5,b:4}])); //
+console.log(sortedObj([{a:2,b:10},{a:5,b:4}])); //
+console.log(sortedObj([{a:1,b:7},{a:2,b:1}])); //
+
+
+
+// Task 38
+//Write a function that takes two arrays as arguments
+//Merge both arrays and remove duplicate values
+//Sort the merge result in ascending order
+//Return the resulting array
+const mergeArrays = (array1: number[], array2: number[]) =>{
+   const oneArray = array1.concat(array2);
+   const removeDupl = oneArray.filter((value, index, self) => self.indexOf(value) === index);
+   const result = removeDupl.sort(function(a, b){return a-b});
+   return result;
+}
+console.log(mergeArrays([1, 2, 3], [3, 4, 5])) // [1, 2, 3, 4, 5]
+console.log(mergeArrays([-10, 22, 333, 42], [-11, 5, 22, 41, 42])) //[-11, -10, 5, 22, 41, 42, 333]
+
+
+
+
+// Task 40 page18
+//Write a function that takes an array (a) and a number (b) as arguments
+//Sum up all array elements with a value greater than b
+//Return the sum
+const sumAgreaterB = (a: number[], b: number): number=>{
+   let sum = 0 
+   for(let i = 0; i < a.length; i++){
+      if (a[i] > b){
+         sum += a[i]
+      }
+   } return sum;
+}
+console.log(sumAgreaterB([1, 2, 3, 4, 5, 6, 7], 2)); // 25
+console.log(sumAgreaterB([-10, -11, -3, 1, -4], -3)); // 1
+console.log(sumAgreaterB([78, 99, 100, 101, 401], 99)); // 602
+
+
+
+// Task 41
+//Write a function that takes two numbers (min and max) as arguments
+//Return an array of numbers in the range min to max
+const minTomax = (a: number, b:number): number [] => {
+   const result: number[] = [];
+   for (let i = a; i<= b; i++){
+       result.push(i)
+   }
+   return result;
+}
+console.log(minTomax(2, 10)); //[2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(minTomax(1, 3)); //[1, 2, 3]
+console.log(minTomax(-5, 5)); //[-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
+console.log(minTomax(2, 7)); //[2, 3, 4, 5, 6, 7]
+
+
+
+
+
+// Task 42 page19
+//Write a function that takes an array of strings as argument
+//Group those strings by their first letter
+//Return an object that contains properties with keys representing first letters
+//The values should be arrays of strings containing only the corresponding strings
+
+const groupFirstLetter = (arr) => {
+   return arr.reduce((obj, value) => {
+     const firstLetter = value.charAt(0).toLowerCase();
+     obj[firstLetter] = (obj[firstLetter] || []).concat(value);
+     return obj;
+   }, {});
+ };
+ 
+   console.log(groupFirstLetter(['Alf', 'Alice', 'Ben'])); //
+
+
+
+
+   // Task 43 
+   //Write a function that takes an array with arbitrary elements and a number as arguments
+   //Return a new array, the first element should be either the given number itself
+   //or zero if the number is smaller than 6
+   //The other elements should be the elements of the original array
+ const moveArguments = (a: any[], b: number): any  =>{
+   if (b < 6) {
+      return [0, a];
+   } else {
+      return [b, a];
+   }
+ };
+console.log(moveArguments([1,2,3], 6)); //
+console.log(moveArguments(['a', 'b'], 2)); //
+console.log(moveArguments([null, false], 11)); //
+
+
+
+
+
+// Task 44 page20
+//Write a function that takes an array (a) and a value (n) as arguments
+//Save every nth element in a new array
+//Return the new array
+const nthArrays

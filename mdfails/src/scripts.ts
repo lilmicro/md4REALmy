@@ -643,7 +643,7 @@ console.log(minTomax(2, 7)); //[2, 3, 4, 5, 6, 7]
 //Return an object that contains properties with keys representing first letters
 //The values should be arrays of strings containing only the corresponding strings
 
-const groupFirstLetter = (arr) => {
+const groupFirstLetter = (arr: string[]) => {
    return arr.reduce((obj, value) => {
      const firstLetter = value.charAt(0).toLowerCase();
      obj[firstLetter] = (obj[firstLetter] || []).concat(value);
@@ -652,6 +652,8 @@ const groupFirstLetter = (arr) => {
  };
  
    console.log(groupFirstLetter(['Alf', 'Alice', 'Ben'])); //
+   console.log(groupFirstLetter(['Ant', 'Bear', 'Bird'])); //
+   console.log(groupFirstLetter(['Berlin', 'Paris', 'Prague'])); //
 
 
 
@@ -661,7 +663,7 @@ const groupFirstLetter = (arr) => {
    //Return a new array, the first element should be either the given number itself
    //or zero if the number is smaller than 6
    //The other elements should be the elements of the original array
- const moveArguments = (a: any[], b: number): any  =>{
+ const moveArguments = (a, b)  =>{
    if (b < 6) {
       return [0, a];
    } else {
@@ -680,4 +682,127 @@ console.log(moveArguments([null, false], 11)); //
 //Write a function that takes an array (a) and a value (n) as arguments
 //Save every nth element in a new array
 //Return the new array
-const nthArrays
+const nthElementNew: number[] = (a: number[], n:number) =>{
+   const result: number[] = [];
+   for (let i=n-1; i<=a.length; i+=n){
+      if (i < a.length{
+         result.push(a[i]);
+      })
+   }
+   return result;
+}
+console.log(nthElementNew([1,2,3,4,5,6,7,8,9,10],3)); // [3, 6, 9]
+console.log(nthElementNew([10,9,8,7,6,5,4,3,2,1],5)); // [6, 1]
+console.log(nthElementNew([7,2,1,6,3,4,5,8,9,10],2)); // [2, 6, 4, 8, 10]
+
+
+
+
+
+//Task 45
+//Write a function that takes an object with two properties as argument
+//It should return the value of the property with key country
+function properties(land: { country: string; continent: string}){
+   return land.country;
+}
+console.log(properties({  continent: 'Asia',  country: 'Japan'})); // Japan
+console.log(properties({  country: 'Sweden',  continent: 'Europe'})); // Sweeden
+
+
+
+
+
+// Task 46
+//Write a function that takes an object with two properties as argument
+//It should return the value of the property with key 'prop-2'
+//Tip: you might want to use the square brackets property accessor
+type properties2 = {
+   'prop-2': any;
+   one: number;
+}
+const functionprop = (obj: properties2) =>{
+   return obj['prop-2'];
+}
+console.log(functionprop({  one: 1,  'prop-2': 2})) // 2
+console.log(functionprop({  'prop-2': 'two',  prop: 'test'})) // two
+
+
+
+
+// Task 47  page21
+//Write a function that takes an object with two properties and a string as arguments
+//It should return the value of the property with key equal to the value of the string
+type Location = {
+   continent: string;
+   country: string;
+}
+const equalValue = (locationProp : Location, a : string) =>{
+   const keys = Object.keys(locationProp)
+   for (const key of keys) {
+      if (key === a) {
+         return locationProp[key];
+      }
+   }
+}
+console.log(equalValue({  continent: 'Asia',  country: 'Japan'}, 'continent')); // Asia
+console.log(equalValue({  country: 'Sweden',  continent: 'Europe'}, 'country')); // Sweeden
+
+
+
+// Task 48 
+//Write a function that takes an object (a) and a string (b) as argument
+//Return true if a has a property with key b
+//Return false otherwise
+type a = {
+   c: string;
+   d: string;
+}
+const aPropB : boolean = (objA: a, b: string)=>{
+   const keys = Object.keys(objA);
+   for (const key of keys) {
+      if (key === b) {
+         return true;
+      }
+   }
+   return false;
+}
+console.log(aPropB({a:1,b:2,c:3},'b')) // true
+console.log(aPropB({x:'a',y:'b',z:'c'},'a')) // false
+console.log(aPropB({x:'a',y:'b',z:'c'},'z')) // true
+
+
+
+
+// Task 49 
+//Write a function that a string (a) as argument
+//Create an object that has a property with key 'key' and a value of a
+//Return the object
+const keyValueA = (a:string) => ({key: a});
+console.log(keyValueA('a')) // {key: 'a'}
+console.log(keyValueA('z')) // {key: 'z'}
+console.log(keyValueA('b')) // {key: 'b'}
+
+
+
+
+
+// Task 50 page22
+// Write a function that takes two strings (a and b) as arguments
+//Create an object that has a property with key 'a' and a value of 'b'
+//Return the object
+const stringProperty = (a: string, b: string): { [key: string]: string } =>{
+  const objectAB: {[key: string]: string} = {
+   [a]: b
+  } return objectAB;
+}
+console.log(stringProperty('a','b')); // {a: 'b'}
+console.log(stringProperty('z','x')); // {z: 'x'}
+console.log(stringProperty('b','w')); // {b: 'w'}
+
+
+
+
+// Task 51
+//Write a function that takes two arrays (a and b) as arguments
+//Create an object that has properties with keys 'a' and corresponding values 'b'
+//Return the object

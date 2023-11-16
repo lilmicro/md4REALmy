@@ -965,7 +965,7 @@ console.log(replaceValue({ a: 'a', b: 'b ', c: ' ', d: '' })) // {a: 'a', b: 'b'
 
 
 
-// Task 59
+// Task 59 page25 | NAV IZLOGOTS PAREIZI
 //Write a function that takes an object as argument containing properties with personal information
 //Extract firstName, lastName, size, and weight if available
 //If size or weight is given transform the value to a string
@@ -980,19 +980,55 @@ type PersonInfo = {
    weight : number;
 }
 const PersonInformation = (a: PersonInfo) : PersonInfo =>{
-   const tranformSizeWeight : PersonInfo = {...a};
-   for ( const key in tranformSizeWeight){
-      if (typeof transformSizeWeight[key] === 'number'){
-         if(key === 'size'){
-            tranformSizeWeight[key] = tranformSizeWeight[key].toString() + 'cm';
-         }
-         else if(key === 'weight'){
-            tranformSizeWeight[key] = tranformSizeWeight[key].toString() + 'kg';
+   const transformedInfo : PersonInfo = {...a};
+   for (const key in transformedInfo) {
+      if (typeof transformedInfo[key] === 'number') {
+         if (key === 'size') {
+            transformedInfo[key] = transformedInfo[key].toString() + 'cm';
+         } else if (key === 'weight') {
+            transformedInfo[key] = transformedInfo[key].toString() + 'kg';
          }
       }
-   }return tranformSizeWeight;
+   }
+   return transformedInfo;
 }
-console.log(PersonInformation({fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67})) //
-console.log(PersonInformation({fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67})) //
-console.log(PersonInformation({fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67})) //
-console.log(PersonInformation({fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67})) //
+console.log(PersonInformation({fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67})) // {fn: 'Lisa', ln: 'Müller', age: 17, size: '175cm', weight: '67kg'}
+console.log(PersonInformation({fn: 'Martin', ln: 'Harper', age: 26, email: 'martin.harper@test.de', weight: 102})) //{fn: 'Martin', ln: 'Harper', age: 26, email: 'martin.harper@test.de', weight: '102kg'}
+console.log(PersonInformation({fn: 'Andrew', ln: 'Harper', age: 81, size: 175, weight: 71})) // {fn: 'Andrew', ln: 'Harper', age: 81, size: '175cm', weight: '71kg'}
+console.log(PersonInformation({fn: 'Matthew', ln: 'Müller', age: 19, email: 'matthew@mueller.de'})) // {fn: 'Matthew', ln: 'Müller', age: 19, email: 'matthew@mueller.de'}
+
+
+
+
+
+
+// Task 60 
+//Write a function that takes an array of objects and a string as arguments
+//Add a property with key 'continent' and value equal to the string to each of the objects
+//Return the new array of objects
+//Tip: try not to mutate the original array
+type Object = {
+   [key: string] : string;
+}
+const equalValueStrings = (a : Object, continent : string) : Object =>{
+   return a.map(obj => ({
+      ...obj,
+      continent: continent
+   }))
+} 
+console.log(equalValueStrings([{ city: 'Tokyo', country: 'Japan' }, { city: 'Bangkok', country: 'Thailand' }], 'Asia')) // [{ city: 'Tokyo', country: 'Japan', continent: 'Asia' }, { city: 'Bangkok', country: 'Thailand', continent: 'Asia' }]
+console.log(equalValueStrings ([{ city: 'Stockholm', country: 'Sweden' }, { city: 'Paris', country: 'France' }], 'Europe')) // [{ city: 'Stockholm', country: 'Sweden', continent: 'Europe' }, { city: 'Paris', country: 'France', continent: 'Europe' }]
+
+
+
+
+
+
+// Task 61 page26
+//Write a function that takes an array of numbers as argument
+//Convert the array to an object
+//It should have a key for each unique value of the array
+//The corresponding object value should be the number of times the key occurs within the array
+const arrayToObject = (numbers: number[]) =>{
+   
+}

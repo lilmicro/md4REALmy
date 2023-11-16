@@ -806,3 +806,193 @@ console.log(stringProperty('b','w')); // {b: 'w'}
 //Write a function that takes two arrays (a and b) as arguments
 //Create an object that has properties with keys 'a' and corresponding values 'b'
 //Return the object
+type abtype = [string | number, string |number]
+const correspondingValues  = (a: abtype , b: abtype) =>{
+   const objAandB: { [key: string]: string | number} = {};
+   for (let i=0; i < a.length; i++){
+      objAandB[String(a[i])] = b[i];
+   }
+   return objAandB;
+}
+console.log(correspondingValues(['a','b','c'],[1,2,3])); //{a: 1, b: 2, c: 3}
+console.log(correspondingValues(['w','x','y','z'],[10,9,5,2])); //{w: 10, x: 9, y: 5, z: 2}
+console.log(correspondingValues([1,'b'],['a',2])); //{1: 'a', b: 2}
+
+
+
+// Task 52
+//Write a function that takes an object (a) as argument
+//Return an array with all object keys
+type ObjectA = {
+   [key: string]: any;
+};
+const ObjectArray = (a : ObjectA) : string[] =>{
+return Object.keys(a);}
+
+console.log(ObjectArray({a:1,b:2,c:3})) // ['a', 'b', 'c']
+console.log(ObjectArray({j:9,i:2,x:3,z:4})) // ['j', 'i', 'x', 'z']
+console.log(ObjectArray({w:15,x:22,y:13})) // ['w', 'x', 'y']
+
+
+
+// Task 53 page23
+//Write a function that takes an object (a) as argument
+//Return the sum of all object values
+type aObject = {
+   [key: string]: number;
+};
+const objectAargument = (a : aObject): number =>{
+   let sum = 0;
+   for( const key in a){
+      sum += a[key]
+   }
+   return sum;
+}
+console.log(objectAargument({a:1,b:2,c:3})) // 6
+console.log(objectAargument({j:9,i:2,x:3,z:4})) // 18
+console.log(objectAargument({w:15,x:22,y:13})) // 50
+
+
+
+
+// Task 54
+//Write a function that takes an object as argument
+//It should return an object with all original object properties
+//except for the property with key 'b'
+type objectProp = {
+   [key: string] : number;
+};
+const objectWithoutB = (a: objectProp): objectProp =>{
+   const  { b, ...restOfProperties } = a;
+   return restOfProperties
+}
+console.log(objectWithoutB({ a: 1, b: 7, c: 3 })) //{a: 1, c: 3}
+console.log(objectWithoutB({ b: 0, a: 7, d: 8 })) //{a: 7, c: 8}
+console.log(objectWithoutB({ e: 6, f: 4, b: 5, a: 3 })) //{e: 6, f: 4, a: 3}
+
+
+
+
+// Task 55
+//Write a function that takes two objects as arguments
+//Unfortunately, the property 'b' in the second object has the wrong key
+//should be named 'd' instead
+//Merge both objects and correct the wrong property name
+//Return the resulting object
+//It should have the properties 'a', 'b', 'c', 'd', and 'e'
+type Object1 = {
+   a : string;
+   b : string;
+}
+type Object2 = {
+   c: string;
+   b: string;
+   e: string;
+}
+const ObjectMergeObject = (obj1: Object1, obj2: Object2) : Object1 | Object2 =>{
+      const {b: oldKey, ...restOfProperties } = obj2;
+      const newObj = {d: obj2.b, ...restOfProperties};
+   
+   const mergeObj = {...obj1, ...newObj};
+   return mergeObj;
+}
+console.log(ObjectMergeObject({ a: 1, b: 2 }, { c: 3, b: 4, e: 5 })) // {a: 1, b: 2, d: 4, c: 3, e: 5}
+console.log(ObjectMergeObject({ a: 5, b: 4 }, { c: 3, b: 1, e: 2 })) // {a: 5, b: 4, d: 1, c: 3, e: 2}
+
+
+
+// Task 56 page24
+//Write a function that takes an object (a) and a number (b) as arguments
+//Multiply all values of 'a' by 'b'
+//Return the resulting object
+type ObjectA2 = {
+   [key: string] : number;
+}
+const objAnumB = (a: ObjectA2, b: number) {
+   const result: ObjectA2={}
+   for(const key in a){
+         result[key] = a[key]*b;
+   }
+   return result;
+}
+console.log(objAnumB({a:1,b:2,c:3},3)) // {a: 3, b: 6, c: 9}
+console.log(objAnumB({j:9,i:2,x:3,z:4},10)) // {j: 90, i: 20, x: 30, z: 40}
+console.log(objAnumB({w:15,x:22,y:13},6)) // {w: 90, x: 132, y: 78}
+
+
+
+// Task 57 
+//Write a function that takes an object as argument
+//Somehow, the properties and keys of the object got mixed up
+//Swap the Javascript object's key with its values and return the resulting object
+type Objectmix = {
+   [key: any] : string;
+}
+const swapedObject = (a: Objectmix) : Objectmix =>{
+   const normalObject : Objectmix ={};
+
+   for(const key in a){
+      const value = a[key];
+      normalObject[value] = key;
+   }
+   return normalObject;
+}
+console.log(swapedObject({z:'a',y:'b',x:'c',w:'d'})) //{a: 'z', b: 'y', c: 'x', d: 'w'}
+console.log(swapedObject({2:'a',4:'b',6:'c',8:'d'})) // {a: '2', b: '4', c: '6', d: '8'}
+console.log(swapedObject({a:1,z:24})) // {1: 'a', 24: 'z'}
+
+
+
+// Task 58 
+//Write a function that takes an object as argument
+//Some of the property values contain empty strings
+//Replace empty strings and strings that contain only whitespace with null values
+//Return the resulting object
+type ObjectValues = {
+   [key: string] :any
+}
+const replaceValue = (a: ObjectValues) : ObjectValues =>{
+   const resultObject : ObjectValues = {}
+   for (const key in a){
+      const value = a[key].trim();
+      resultObject[key] = value === ''? null : value; //ternary operator
+   }
+   return resultObject;
+}
+console.log(replaceValue({ a: 'a', b: 'b', c: '' })) // {a: 'a', b: 'b', c: null}
+console.log(replaceValue({ a: '', b: 'b', c: ' ', d: 'd' })) // {a: null, b: 'b', c: null, d: 'd'}
+console.log(replaceValue({ a: 'a', b: 'b ', c: ' ', d: '' })) // {a: 'a', b: 'b', c: null, d: null}
+
+
+
+// Task 59
+//Write a function that takes an object as argument containing properties with personal information
+//Extract firstName, lastName, size, and weight if available
+//If size or weight is given transform the value to a string
+//Attach the unit cm to the size
+//Attach the unit kg to the weight
+//Return a new object with all available properties that we are interested in
+type PersonInfo = {
+   fn : string;
+   ln : string;
+   age: number;
+   size: number;
+   weight : number;
+}
+const PersonInformation = (a: PersonInfo) : PersonInfo =>{
+   const tranformSizeWeight : PersonInfo = {...a};
+   for ( const key in tranformSizeWeight){
+      if (typeof transformSizeWeight[key] === 'number'){
+         if(key === 'size'){
+            tranformSizeWeight[key] = tranformSizeWeight[key].toString() + 'cm';
+         }
+         else if(key === 'weight'){
+            tranformSizeWeight[key] = tranformSizeWeight[key].toString() + 'kg';
+         }
+      }
+   }return tranformSizeWeight;
+}
+console.log(PersonInformation({fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67})) //
+console.log(PersonInformation({fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67})) //
+console.log(PersonInformation({fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67})) //
+console.log(PersonInformation({fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67})) //

@@ -1029,6 +1029,122 @@ console.log(equalValueStrings ([{ city: 'Stockholm', country: 'Sweden' }, { city
 //Convert the array to an object
 //It should have a key for each unique value of the array
 //The corresponding object value should be the number of times the key occurs within the array
-const arrayToObject = (numbers: number[]) =>{
-   
+const arrayToObject = (arr){
+   const obj = {};
+
+   for (const num of arr){
+      if (obj[num]{
+         obj[num]++;
+      }else {
+         obj[num]=1;
+      })
+   }
+   return obj;
 }
+console.log(arrayToObject([1,2,2,3])) //{1: 1, 2: 2, 3: 1}
+console.log(arrayToObject([9,9,9,99])) //{9: 3, 99: 1}
+console.log(arrayToObject([4,3,2,1])) //{1: 1, 2: 1, 3: 1, 4: 1}
+
+
+
+
+// Task 62
+//Write a function that takes two date instances as arguments
+//It should return true if the dates are equal
+//It should return false otherwise
+const equalDates = (date1: Date, date2: Date): boolean  => {
+   return date1.getTime() === date2.getTime()
+}
+console.log(equalDates(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 08:45:00'))) // false
+console.log(equalDates (new Date('2000/01/01 08:00:00'), new Date('2000/01/01 08:00:00'))) // true
+console.log(equalDates(new Date('2001/01/01 08:00:00'), new Date('2000/01/01 08:00:00'))) // false
+
+
+
+// Task 63
+//Write a function that takes two date instances as argument
+//It should return the number of days that lies between those dates
+const daysBetween = (date1: Date, date2: Date) : number =>{
+   const daysdif =  date1.getTime() - date2.getTime();
+   const days = daysdif / (1000 * 60 * 60 *24);
+   return Math.abs(Math.round(days)); 
+}
+console.log(daysBetween(new Date('2020-06-11'), new Date('2020-06-01'))) // 10
+console.log(daysBetween(new Date('2000-01-01'), new Date('2020-06-01'))) // 7457
+
+
+
+
+// Task 64
+//Write a function that takes two date instances as argument
+//It should return true if they fall on the exact same day
+//It should return false otherwise
+const sameDay = (date1: Date, date2: Date): boolean  => {
+   return date1.getTime() === date2.getTime()
+}
+console.log(sameDay(new Date('2000/01/01'), new Date('2000/01/01'))) // true
+console.log(sameDay(new Date('2000/01/01'), new Date('2000/01/02'))) // false
+console.log(sameDay(new Date('2001/01/01'), new Date('2000/01/01'))) // false
+console.log(sameDay(new Date('2000/11/01'), new Date('2000/01/01'))) //false
+
+
+
+// Task 65
+//Write a function that takes two number arrays as parameters 
+//and return an array which contains elements from both 
+//arrays
+const bothElement = (a: number[], b: number[]) : number[] =>{
+   return [...a, ...b]
+}
+console.log(bothElement([1, 2], [3, 4]) ) //[1, 2, 3, 4]
+console.log(bothElement([1, 2], [3, 4, 5, 6]) ) //[1, 2, 3, 4, 5, 6]
+
+
+// Task 66
+//Write a function that takes an array and a string as parameters 
+//and return an array which contains all elements from the given array
+//and the given string as the last element
+const allElements = (a: string[], b: string) : string[] =>{
+   return [...a, b]
+}
+console.log(allElements(['Apple', 'Orange', 'Banana'], 'Kiwi')) //['Apple', 'Orange', 'Banana', 'Kiwi']
+
+
+
+
+// Task 67
+//Write a function that takes an array and a string as parameters 
+//and return an array which contains all elements from the given array
+//and the given string as the first element
+const allElements2 = (a: string[], b: string) : string[] =>{
+   return [ b, ...a]
+}
+console.log(allElements2(['Apple', 'Orange', 'Banana'], 'Kiwi')) //['Kiwi', 'Apple', 'Orange', 'Banana']
+
+
+// Task 68
+//Write a function that takes two objects as parameters 
+//and return an object which contains properties from both 
+//objects
+type  Obj1 = {
+   [key: sring] : number
+}
+const twoObject = (obj1: Obj1, obj2: Obj1) : Obj1 =>{
+   return {...obj1, ...obj2}
+}
+console.log(twoObject({ a:1, b:2 }, { c:3, d:4 })) //{a: 1, b: 2, c: 3, d: 4}
+console.log(twoObject({ a:1, b:2 }, { c:3, d:4, e:5, f:6 })) // {a: 1, b: 2, c: 3, d: 4, e: 5, …}
+
+
+// Task 69
+//Write a function that takes an object and a string as parameters 
+//and return an object which contains properties from the given object
+//and a new property favoriteMovie with the value equal to the given string
+type Obj = {
+   [key: string] : number
+}
+const objectProperties = (obj: Obj, b: string) :Obj =>{
+   return {...obj, favouriteMovie : b }
+}
+console.log(objectProperties({ eyeColor: 'green', age: 10 }, 'Garfield') ) //{eyeColor: 'green', age: 10, favouriteMovie: 'Garfield'}
+console.log(objectProperties({ eyeColor: 'blue', age: 15 }, 'Twilight')  ) //{eyeColor: 'blue', age: 15, favouriteMovie: 'Twilight'}
